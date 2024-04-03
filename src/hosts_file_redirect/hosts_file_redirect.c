@@ -28,6 +28,7 @@ hook_func_no_info(do_filp_open);
 
 static struct file *hook_replace(do_filp_open)(int dfd, struct filename *pathname, const struct open_flags *o)
 {
+    pr_info("[HFR] %s\n", pathname->name);
     if (unlikely(!strcmp(hostsOrigPath, pathname->name))) {
         bool replace = false;
         const char *originName = NULL;
